@@ -7,3 +7,4 @@ export default function Articles() {
     </div>
   );
 }
+//further just added this.....
