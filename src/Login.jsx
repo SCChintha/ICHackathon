@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+
 const roles = [
   { value: '', label: '-- Select Role --' },
   { value: 'admin', label: 'Admin' },
@@ -74,7 +76,7 @@ class LoginInner extends Component {
         if (!this.validateSignup()) return;
         const { signupData } = this.state;
 
-        fetch('http://localhost:5000/api/auth/register', {
+        fetch(`${API_BASE_URL}/api/auth/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -121,7 +123,7 @@ class LoginInner extends Component {
             alert("Please fill in role, email and password to login.");
             return;
         }
-        fetch('http://localhost:5000/api/auth/login', {
+        fetch(`${API_BASE_URL}/api/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

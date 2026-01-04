@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Link, useNavigate } from "react-router-dom";
 import Login from "./Login.jsx";
 import Home from "./Home.jsx";
 import Articles from "./Articles.jsx";
@@ -133,8 +133,8 @@ function AppRouter() {
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <AppRouter />
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );

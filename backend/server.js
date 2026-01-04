@@ -11,9 +11,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const MONGO_URI =
-  process.env.MONGO_URI ||
-  'mongodb+srv://2400030039_db_user:saikanni1224@india.ir0z5uo.mongodb.net/hackathon_db?retryWrites=true&w=majority&appName=india';
+const { MONGO_URI } = process.env;
+
+if (!MONGO_URI) {
+  console.error('MONGO_URI is not set. Please configure it in your environment.');
+  process.exit(1);
+}
 
 mongoose
   .connect(MONGO_URI)
@@ -22,6 +25,7 @@ mongoose
   })
   .catch((err) => {
     console.error('MongoDB connection error:', err.message);
+    process.exit(1);
   });
 
 app.use('/api/auth', authRouter);
